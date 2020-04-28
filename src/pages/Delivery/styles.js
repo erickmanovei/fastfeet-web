@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    max-width: 600px;
-    margin: 50px auto;
+    width: 100%;
+    background: #f5f5f5;
+    height: 100%;
+`;
+
+export const Content = styled.div`
+    max-width: 1200px;
+    margin: 0 auto;
 
     display: flex;
     flex-direction: column;
@@ -50,4 +56,10 @@ export const Time = styled.li`
         margin-top: 3px;
         color: ${(props) => (props.available ? '#999' : '#666')};
     }
+`;
+
+export const Title = styled.h1`
+    margin-top: 50px;
+    font-size: 24px;
+    color: #444444;
 `;
