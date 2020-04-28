@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import history from '~/services/history';
 
 import { signOut } from '~/store/modules/auth/actions';
 
-import { Container, Content, Profile } from './styles';
+import { Container, Content, Profile, LinkMenu } from './styles';
 import logo from '~/assets/fastfeet-logo.png';
 
 export default function Header() {
@@ -18,7 +18,38 @@ export default function Header() {
             <Content>
                 <nav>
                     <img src={logo} alt="Fastfeet" />
-                    <Link to="/dashboard">DASHBOARD</Link>
+                    <LinkMenu
+                        to="/delivery"
+                        activelabel={(
+                            history.location.pathname === '/delivery'
+                        ).toString()}
+                    >
+                        ENCOMENDAS
+                    </LinkMenu>
+                    <LinkMenu
+                        to="/deliveryman"
+                        activelabel={(
+                            history.location.pathname === '/deliveryman'
+                        ).toString()}
+                    >
+                        ENTREGADORES
+                    </LinkMenu>
+                    <LinkMenu
+                        to="/recipient"
+                        activelabel={(
+                            history.location.pathname === '/recipient'
+                        ).toString()}
+                    >
+                        DESTINATARIOS
+                    </LinkMenu>
+                    <LinkMenu
+                        to="/problems"
+                        activelabel={(
+                            history.location.pathname === '/problems'
+                        ).toString()}
+                    >
+                        PROBLEMAS
+                    </LinkMenu>
                 </nav>
                 <aside>
                     <Profile>
