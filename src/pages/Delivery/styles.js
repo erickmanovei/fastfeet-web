@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
     max-width: 1200px;
@@ -30,25 +31,17 @@ export const Container = styled.div`
         grid-gap: 15px;
         margin-top: 30px;
     }
-`;
 
-export const Time = styled.li`
-    padding: 20px;
-    border-radius: 4px;
-    background: #fff;
-    opacity: ${(props) => (props.past ? 0.6 : 1)};
-
-    strong {
-        display: block;
-        color: ${(props) => (props.available ? '#999' : '#7159c1')};
-        font-size: 20px;
-        font-weight: normal;
+    tr {
+        text-align: left;
+        padding: 10px 20px;
+        margin: 10px;
+        background: #fff;
     }
 
-    span {
-        display: block;
-        margin-top: 3px;
-        color: ${(props) => (props.available ? '#999' : '#666')};
+    th {
+        text-align: left;
+        padding: 10px 20px;
     }
 `;
 
@@ -56,4 +49,32 @@ export const Title = styled.h1`
     margin-top: 50px;
     font-size: 24px;
     color: #444444;
+`;
+
+export const HeaderActions = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px 0;
+
+    button {
+        width: 150px;
+        height: 40px;
+        border-radius: 5px;
+        border: 0;
+        background: #7d40e7;
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        &:hover {
+            background: ${darken(0.09, '#7d40e7')};
+        }
+        svg {
+            margin-right: 5px;
+        }
+    }
 `;
