@@ -31,18 +31,11 @@ export const Container = styled.div`
         grid-gap: 15px;
         margin-top: 30px;
     }
+`;
 
-    tr {
-        text-align: left;
-        padding: 10px 20px;
-        margin: 10px;
-        background: #fff;
-    }
-
-    th {
-        text-align: left;
-        padding: 10px 20px;
-    }
+export const Name = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 export const Title = styled.h1`

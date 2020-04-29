@@ -6,11 +6,16 @@ import { Search, SearchBar } from './styles';
 
 // libaries
 
-const SearchInput = ({ placeholder }) => {
+const SearchInput = ({ placeholder, onchange }) => {
     return (
         <Search>
             <FaSearch style={{ marginLeft: '1rem', position: 'absolute' }} />
-            <SearchBar id="search-bar" type="text" placeholder={placeholder} />
+            <SearchBar
+                id="search-bar"
+                type="text"
+                placeholder={placeholder}
+                onChange={(e) => onchange(e.target.value)}
+            />
         </Search>
     );
 };
