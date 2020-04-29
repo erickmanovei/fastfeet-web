@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { Container, Title, HeaderActions, Name } from './styles';
+import Modal from 'react-awesome-modal';
+import { Container, Title, HeaderActions, Name, ModalContent } from './styles';
+import history from '~/services/history';
 import SearchInput from '~/components/SearchInput';
 import Badge from '~/components/Badge';
 import Initials from '~/components/Initials';
@@ -11,9 +13,11 @@ import api from '~/services/api';
 
 export default function Delivery() {
     const [deliveries, setDeliveries] = useState([]);
+    const [delivery, setDelivery] = useState(null);
     const [deliveriesTotal, setDeliveriesTotal] = useState(0);
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(3);
+    const [showModal, setShowModal] = useState(false);
 
     const listDeliveries = async (
         product = null,
@@ -64,6 +68,19 @@ export default function Delivery() {
         }
     };
 
+    const handleCreate = async () => {
+        history.push('/delivery/store');
+    };
+    const handleShow = async (id) => {
+        const { data } = await api.get(`/deliveries/${id}`);
+        setDelivery(data);
+        setShowModal(true);
+    };
+    const handleUpdate = () => {};
+    const handleRemove = async (id) => {
+        await api.delete(`/deliveries/${id}`);
+        listDeliveries();
+    };
     return (
         <Container>
             <Title>Gerenciando Encomendas</Title>
@@ -72,7 +89,7 @@ export default function Delivery() {
                     placeholder="Buscar por Encomendas"
                     onchange={handleSearch}
                 />
-                <button type="button">
+                <button type="button" onClick={handleCreate}>
                     <FaPlus />
                     Cadastrar
                 </button>
@@ -108,7 +125,12 @@ export default function Delivery() {
                                 <Badge label={d.status} />
                             </td>
                             <td>
-                                <Actions id={d.id} />
+                                <Actions
+                                    id={d.id}
+                                    show={handleShow}
+                                    update={handleUpdate}
+                                    remove={handleRemove}
+                                />
                             </td>
                         </tr>
                     ))}
@@ -120,6 +142,45 @@ export default function Delivery() {
                 perpage={perPage}
                 totalregisters={deliveriesTotal}
             />
+            <Modal
+                visible={showModal}
+                width="400"
+                height="380"
+                effect="fadeInUp"
+                onClickAway={() => setShowModal(false)}
+            >
+                {delivery ? (
+                    <ModalContent>
+                        <h3>Informações da Encomenda</h3>
+                        <p>{`${delivery.recipient.address}, ${delivery.recipient.address_number}, ${delivery.recipient.address_complement}`}</p>
+                        <p>{`${delivery.recipient.city} - ${delivery.recipient.state}`}</p>
+                        <hr />
+                        <h3>Datas</h3>
+                        <p>
+                            <strong>Retirada: </strong> {delivery.start_date}
+                        </p>
+                        <p>
+                            <strong>Entrega: </strong> {delivery.end_date}
+                        </p>
+                        <hr />
+                        <h3>Assinatura do destinatário</h3>
+                        {delivery.signature_id ? (
+                            <img
+                                alt="Assinatura"
+                                src={delivery.signature.url}
+                            />
+                        ) : (
+                            <p>Não possui assunatura.</p>
+                        )}
+                        <button
+                            type="button"
+                            onClick={() => setShowModal(false)}
+                        >
+                            Fechar
+                        </button>
+                    </ModalContent>
+                ) : null}
+            </Modal>
         </Container>
     );
 }

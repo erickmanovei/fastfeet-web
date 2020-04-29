@@ -15,7 +15,7 @@ export const ActionList = styled.div`
     padding: 5px 5px;
     display: ${(props) => (props.visible ? 'block' : 'none')};
     box-shadow: 1px 1px 3px #000;
-    z-index: 999;
+    z-index: 9;
 
     &::after {
         content: '';
@@ -50,7 +50,7 @@ export const ActionList = styled.div`
             padding-top: 10px;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
-        a {
+        button {
             color: #999999;
             &:hover {
                 color: #7d40e7;

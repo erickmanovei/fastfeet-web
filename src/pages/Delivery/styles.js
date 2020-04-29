@@ -48,7 +48,7 @@ export const HeaderActions = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 40px 0;
+    margin: 20px 0;
 
     button {
         width: 150px;
@@ -69,5 +69,80 @@ export const HeaderActions = styled.div`
         svg {
             margin-right: 5px;
         }
+    }
+`;
+
+export const HeaderActionsStore = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+
+    h1 {
+        font-size: 24px;
+        color: #444444;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+    }
+`;
+export const ButtonActionsStore = styled.button`
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    background: ${(props) => (props.back ? '#CCCCCC' : '#7d40e7')};
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    margin-left: 20px;
+    &:hover {
+        background: ${(props) =>
+            props.back ? darken(0.09, '#CCCCCC') : darken(0.09, '#7d40e7')};
+    }
+    svg {
+        margin-right: 5px;
+    }
+`;
+
+export const ContentStore = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: #fff;
+`;
+
+export const ModalContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    p {
+        margin: 4px 0;
+        font-size: 12px;
+    }
+    hr {
+        margin: 15px 0px;
+    }
+    img {
+        max-height: 80px;
+    }
+    button {
+        margin-top: 20px;
+        background: #7159e1;
+        border: 0;
+        border-radius: 5px;
+        color: #fff;
+        height: 20px;
     }
 `;
