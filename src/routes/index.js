@@ -7,6 +7,9 @@ import Delivery from '../pages/Delivery';
 import DeliveryStore from '../pages/Delivery/store';
 import Deliveryman from '../pages/Deliveryman';
 import DeliverymanStore from '../pages/Deliveryman/store';
+import Recipient from '../pages/Recipient';
+import RecipientStore from '../pages/Recipient/store';
+import Problem from '../pages/Problem';
 
 export default function Routes() {
     return (
@@ -37,6 +40,15 @@ export default function Routes() {
                 isPrivate
                 component={DeliverymanStore}
             />
+            <Route exact path="/recipient" isPrivate component={Recipient} />
+            <Route
+                exact
+                path="/recipient/store"
+                isPrivate
+                component={RecipientStore}
+            />
+            <Route path="/recipient/:id" isPrivate component={RecipientStore} />
+            <Route exact path="/problem" isPrivate component={Problem} />
         </Switch>
     );
 }

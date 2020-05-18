@@ -60,7 +60,7 @@ export default function DeliveryStore(props) {
 
         const listRecipients = async () => {
             const { data } = await api.get('/recipients');
-            const simpleData = data.map((e) => ({
+            const simpleData = data.rows.map((e) => ({
                 value: e.id,
                 label: e.name,
             }));
@@ -78,7 +78,7 @@ export default function DeliveryStore(props) {
 
         const listDeliveryman = async () => {
             const { data } = await api.get('/deliverymans');
-            const simpleData = data.map((e) => ({
+            const simpleData = data.rows.map((e) => ({
                 value: e.id,
                 label: e.name,
             }));

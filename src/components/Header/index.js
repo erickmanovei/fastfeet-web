@@ -43,9 +43,9 @@ export default function Header() {
                         DESTINATARIOS
                     </LinkMenu>
                     <LinkMenu
-                        to="/problems"
+                        to="/problem"
                         activelabel={(
-                            history.location.pathname === '/problems'
+                            history.location.pathname === '/problem'
                         ).toString()}
                     >
                         PROBLEMAS

@@ -147,7 +147,6 @@ export default function Delivery() {
             <Modal
                 visible={showModal}
                 width="400"
-                height="380"
                 effect="fadeInUp"
                 onClickAway={() => setShowModal(false)}
             >

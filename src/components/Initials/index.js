@@ -28,6 +28,10 @@ const Initials = ({ name, image }) => {
 
 Initials.propTypes = {
     name: PropTypes.string.isRequired,
+    image: PropTypes.string,
+};
+Initials.defaultProps = {
+    image: null,
 };
 
 export default Initials;

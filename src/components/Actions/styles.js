@@ -6,8 +6,8 @@ export const Container = styled.div`
 
 export const ActionList = styled.div`
     position: absolute;
-    width: 160px;
-    left: calc(50% - 116px);
+    width: 190px;
+    left: calc(-88px);
     top: calc(100% + 10px);
     background: rgba(255, 255, 255, 1);
     border: 1px solid rgba(0, 0, 0, 0.1);

@@ -5,7 +5,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { Container, ActionList } from './styles';
 
-const Actions = ({ id, show, update, remove }) => {
+const Actions = ({ id, show, update, remove, removelabel }) => {
     const [visible, setVisible] = useState(false);
 
     const handleVisible = () => {
@@ -62,7 +62,7 @@ const Actions = ({ id, show, update, remove }) => {
                             onClick={handeRemove}
                             to={`/delivery/${id}`}
                         >
-                            <FaTrash color="#DE3B3B" /> Excluir
+                            <FaTrash color="#DE3B3B" /> {removelabel}
                         </button>
                     </li>
                 ) : null}
@@ -76,12 +76,14 @@ Actions.propTypes = {
     show: PropTypes.func,
     update: PropTypes.func,
     remove: PropTypes.func,
+    removelabel: PropTypes.string,
 };
 
 Actions.defaultProps = {
     show: null,
     update: null,
     remove: null,
+    removelabel: 'Excluir',
 };
 
 export default Actions;
