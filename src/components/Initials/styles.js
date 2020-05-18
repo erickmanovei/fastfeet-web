@@ -12,3 +12,9 @@ export const Container = styled.div`
     margin-right: 10px;
     color: ${(props) => darken(0.5, props.color)};
 `;
+
+export const Image = styled.img`
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+`;

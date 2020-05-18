@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import randomColor from 'randomcolor';
 
-import { Container } from './styles';
+import { Container, Image } from './styles';
 
 const getInitials = (string) => {
     const names = string.split(' ');
@@ -14,7 +14,11 @@ const getInitials = (string) => {
     return initials;
 };
 
-const Initials = ({ name }) => {
+const Initials = ({ name, image }) => {
+    if (image) {
+        return <Image src={image} />;
+    }
+
     const color = randomColor({
         luminosity: 'light',
     });

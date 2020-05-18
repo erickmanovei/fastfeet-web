@@ -118,6 +118,22 @@ export const ContentStore = styled.div`
     padding: 20px;
     background: #fff;
 `;
+export const InputField = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 15px 5px;
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    input {
+        height: 38px;
+        border-radius: 3px;
+        background: none;
+        border: 1px solid #cccccc;
+        padding: 0 10px;
+    }
+`;
 
 export const ModalContent = styled.div`
     display: flex;
@@ -145,4 +161,28 @@ export const ModalContent = styled.div`
         color: #fff;
         height: 20px;
     }
+`;
+
+export const SelectRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const SelectItem = styled.div`
+    list-style: none;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 5px;
+`;
+export const LabelSelect = styled.div`
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+`;
+export const SpanError = styled.div`
+    font-size: 10px;
+    color: #ff0000;
+    display: ${(props) => (props.show ? 'block' : 'none')};
 `;

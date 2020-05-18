@@ -76,7 +76,9 @@ export default function Delivery() {
         setDelivery(data);
         setShowModal(true);
     };
-    const handleUpdate = () => {};
+    const handleUpdate = (id) => {
+        history.push(`/delivery/${id}`);
+    };
     const handleRemove = async (id) => {
         await api.delete(`/deliveries/${id}`);
         listDeliveries();
@@ -139,7 +141,7 @@ export default function Delivery() {
             <Pagination
                 listfunction={listDeliveries}
                 page={page}
-                perpage={perPage}
+                perpage={parseInt(perPage, 10)}
                 totalregisters={deliveriesTotal}
             />
             <Modal

@@ -6,6 +6,7 @@ import SignIn from '../pages/SignIn';
 import Delivery from '../pages/Delivery';
 import DeliveryStore from '../pages/Delivery/store';
 import Deliveryman from '../pages/Deliveryman';
+import DeliverymanStore from '../pages/Deliveryman/store';
 
 export default function Routes() {
     return (
@@ -18,7 +19,24 @@ export default function Routes() {
                 isPrivate
                 component={DeliveryStore}
             />
-            <Route path="/deliveryman" isPrivate component={Deliveryman} />
+            <Route path="/delivery/:id" isPrivate component={DeliveryStore} />
+            <Route
+                exact
+                path="/deliveryman"
+                isPrivate
+                component={Deliveryman}
+            />
+            <Route
+                exact
+                path="/deliveryman/store"
+                isPrivate
+                component={DeliverymanStore}
+            />
+            <Route
+                path="/deliveryman/:id"
+                isPrivate
+                component={DeliverymanStore}
+            />
         </Switch>
     );
 }
