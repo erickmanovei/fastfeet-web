@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+export const Ext = styled.div`
+    position: absolute;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: ${(props) => (props.show ? 'block' : 'none')};
+`;
+
 export const Container = styled.div`
     position: relative;
 `;

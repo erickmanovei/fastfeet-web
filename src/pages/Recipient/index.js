@@ -41,6 +41,7 @@ export default function Recipient() {
 
     useEffect(() => {
         listRecipients();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSearch = (value) => {
@@ -85,6 +86,13 @@ export default function Recipient() {
                     </tr>
                 </thead>
                 <tbody>
+                    {recipients.length === 0 ? (
+                        <tr>
+                            <td colSpan={4} align="center">
+                                Não existem registros.
+                            </td>
+                        </tr>
+                    ) : null}
                     {recipients.map((d) => (
                         <tr key={d.id}>
                             <td>#{d.id}</td>

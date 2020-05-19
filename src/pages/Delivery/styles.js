@@ -151,7 +151,7 @@ export const ModalContent = styled.div`
         margin: 15px 0px;
     }
     img {
-        max-height: 80px;
+        width: 100%;
     }
     button {
         margin-top: 20px;

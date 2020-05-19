@@ -58,6 +58,7 @@ export default function Delivery() {
 
     useEffect(() => {
         listDeliveries();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSearch = (value) => {
@@ -110,6 +111,13 @@ export default function Delivery() {
                     </tr>
                 </thead>
                 <tbody>
+                    {deliveries.length === 0 ? (
+                        <tr>
+                            <td colSpan={8} align="center">
+                                Não existem registros.
+                            </td>
+                        </tr>
+                    ) : null}
                     {deliveries.map((d) => (
                         <tr key={d.id}>
                             <td>#{d.id}</td>

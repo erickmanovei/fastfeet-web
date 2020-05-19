@@ -41,6 +41,7 @@ export default function Problem() {
 
     useEffect(() => {
         listProblems();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleRemove = async (id) => {
@@ -69,6 +70,13 @@ export default function Problem() {
                     </tr>
                 </thead>
                 <tbody>
+                    {problems.length === 0 ? (
+                        <tr>
+                            <td colSpan={3} align="center">
+                                Não existem registros.
+                            </td>
+                        </tr>
+                    ) : null}
                     {problems.map((d) => (
                         <tr key={d.id}>
                             <td>#{d.delivery.id}</td>

@@ -42,6 +42,7 @@ export default function Deliveryman() {
 
     useEffect(() => {
         listDeliverymans();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleSearch = (value) => {
@@ -87,6 +88,13 @@ export default function Deliveryman() {
                     </tr>
                 </thead>
                 <tbody>
+                    {deliverymans.length === 0 ? (
+                        <tr>
+                            <td colSpan={5} align="center">
+                                Não existem registros.
+                            </td>
+                        </tr>
+                    ) : null}
                     {deliverymans.map((d) => (
                         <tr key={d.id}>
                             <td>#{d.id}</td>
