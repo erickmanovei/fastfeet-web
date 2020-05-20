@@ -133,6 +133,10 @@ export const InputField = styled.div`
         border: 1px solid #cccccc;
         padding: 0 10px;
     }
+    span {
+        font-size: 10px;
+        color: #ff0000;
+    }
 `;
 
 export const ModalContent = styled.div`
@@ -175,6 +179,9 @@ export const SelectItem = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 0 5px;
+    label {
+        font-weight: bold;
+    }
 `;
 export const LabelSelect = styled.div`
     font-size: 14px;
