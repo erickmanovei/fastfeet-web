@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import Modal from 'react-awesome-modal';
-import { Container, Title, HeaderActions, Name, ModalContent } from './styles';
+import { toast } from 'react-toastify';
+import {
+    Container,
+    Title,
+    HeaderActions,
+    Name,
+    ModalContent,
+    TakeButton,
+} from './styles';
 import history from '~/services/history';
 import SearchInput from '~/components/SearchInput';
 import Badge from '~/components/Badge';
@@ -81,8 +89,22 @@ export default function Delivery() {
         history.push(`/delivery/${id}`);
     };
     const handleRemove = async (id) => {
-        await api.delete(`/deliveries/${id}`);
-        listDeliveries();
+        try {
+            await api.delete(`/deliveries/${id}`);
+            listDeliveries();
+            toast.success('Encomenda removida com sucesso!');
+        } catch (err) {
+            toast.error('Falha na remoção da encomenda.');
+        }
+    };
+    const handleTakeDelivery = async (id) => {
+        try {
+            await api.put(`/deliveries/${id}/take`);
+            listDeliveries();
+            toast.success('Encomenda retirada com sucesso!');
+        } catch (err) {
+            toast.error('Falha na retirada da encomenda.');
+        }
     };
     return (
         <Container>
@@ -107,6 +129,7 @@ export default function Delivery() {
                         <th>Cidade</th>
                         <th>Estado</th>
                         <th>Status</th>
+                        <th>Retirar</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -133,6 +156,13 @@ export default function Delivery() {
                             <td>{d.recipient.state}</td>
                             <td>
                                 <Badge label={d.status} />
+                            </td>
+                            <td>
+                                <TakeButton
+                                    onClick={() => handleTakeDelivery(d.id)}
+                                >
+                                    Retirar
+                                </TakeButton>
                             </td>
                             <td>
                                 <Actions

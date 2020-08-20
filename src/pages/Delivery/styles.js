@@ -193,3 +193,9 @@ export const SpanError = styled.div`
     color: #ff0000;
     display: ${(props) => (props.show ? 'block' : 'none')};
 `;
+export const TakeButton = styled.button`
+    color: #ff0000;
+    &:hover {
+        color: #000;
+    }
+`;
