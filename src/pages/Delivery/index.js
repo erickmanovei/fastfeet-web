@@ -158,11 +158,13 @@ export default function Delivery() {
                                 <Badge label={d.status} />
                             </td>
                             <td>
-                                <TakeButton
-                                    onClick={() => handleTakeDelivery(d.id)}
-                                >
-                                    Retirar
-                                </TakeButton>
+                                {d.status === 'PENDENTE' ? (
+                                    <TakeButton
+                                        onClick={() => handleTakeDelivery(d.id)}
+                                    >
+                                        Retirar
+                                    </TakeButton>
+                                ) : null}
                             </td>
                             <td>
                                 <Actions
